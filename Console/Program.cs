@@ -83,8 +83,16 @@ public class Program
     // Implemented Power method
     public static double Power(string x, string y)
     {
-        double baseValue = double.Parse(x);
-        double exponent = double.Parse(y);
-        return Math.Pow(baseValue, exponent);  // Using Math.Pow to calculate x^y
-    }
+        try
+        {
+            double baseValue = double.Parse(x);
+            double exponent = double.Parse(y);
+            return Math.Pow(baseValue, exponent);  // Using Math.Pow to calculate x^y
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Invalid input! Please enter valid numbers for x and y.");
+            return 0.0;  // Return a default value in case of error
+        }
+}
 }
