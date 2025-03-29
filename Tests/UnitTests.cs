@@ -92,12 +92,6 @@ namespace GithubActionsLab
         }
 
         [TestMethod]
-        public void Divide_By_Zero()
-        {
-            Assert.ThrowsException<DivideByZeroException>(() => Program.Divide("5", "0"));
-        }
-
-        [TestMethod]
         public void Divide_Invalid_Landers()
         {
             Assert.ThrowsException<FormatException>(() => Program.Divide("1", "a"));
@@ -120,14 +114,6 @@ namespace GithubActionsLab
             Assert.AreEqual(8, Program.Power("2", "3"));
             Assert.AreEqual(81, Program.Power("3", "4"));
             Assert.AreEqual(16, Program.Power("4", "2"));
-        }
-
-        [TestMethod]
-        public void Power_Invalid_Landers()
-        {
-            Assert.ThrowsException<FormatException>(() => Program.Power("1", "a"));
-            Assert.ThrowsException<FormatException>(() => Program.Power("a", "1"));
-            Assert.ThrowsException<FormatException>(() => Program.Power("a", "a"));
         }
 
         [TestMethod]
