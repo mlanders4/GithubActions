@@ -33,7 +33,7 @@ public class Program
                         operation = Divide;
                         break;
                     case "5":
-                        operation = Power;  // Power operation
+                        operation = Power;
                         break;
                     case "6":
                         loop = false;
@@ -80,7 +80,6 @@ public class Program
         double numerator = double.Parse(x);
         double denominator = double.Parse(y);
 
-        // Ensure the denominator is not zero before performing the division
         if (denominator == 0)
         {
             throw new DivideByZeroException("Cannot divide by zero!");
@@ -89,21 +88,12 @@ public class Program
         return numerator / denominator;
     }
 
-    // Power method now throws FormatException for invalid input
     public static double Power(string x, string y)
     {
-        try
-        {
-            double baseValue = double.Parse(x);
-            double exponent = double.Parse(y);
+        // Directly parsing values to let FormatException be naturally thrown
+        double baseValue = double.Parse(x);
+        double exponent = double.Parse(y);
 
-            // Perform the power operation
-            return Math.Pow(baseValue, exponent);
-        }
-        catch (FormatException)
-        {
-            // Re-throw FormatException to allow the test to catch it
-            throw new FormatException("Invalid input! Please enter valid numbers for x and y.");
-        }
+        return Math.Pow(baseValue, exponent);
     }
 }
