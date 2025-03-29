@@ -33,7 +33,7 @@ public class Program
                         operation = Divide;
                         break;
                     case "5":
-                        operation = Power;  // Power case
+                        operation = Power;  // Power operation
                         break;
                     case "6":
                         loop = false;
@@ -80,13 +80,19 @@ public class Program
         return double.Parse(x) / double.Parse(y);
     }
 
-    // Implemented Power method
+    // Implemented Power method with debugging
     public static double Power(string x, string y)
     {
         try
         {
+            // Explicitly parse the string inputs
             double baseValue = double.Parse(x);
             double exponent = double.Parse(y);
+
+            // Debugging output to ensure correct values
+            Console.WriteLine($"Base: {baseValue}, Exponent: {exponent}");
+
+            // Perform the power operation
             return Math.Pow(baseValue, exponent);  // Using Math.Pow to calculate x^y
         }
         catch (FormatException)
@@ -94,5 +100,5 @@ public class Program
             Console.WriteLine("Invalid input! Please enter valid numbers for x and y.");
             return 0.0;  // Return a default value in case of error
         }
-}
+    }
 }
