@@ -77,28 +77,33 @@ public class Program
 
     public static double Divide(string x, string y)
     {
-        return double.Parse(x) / double.Parse(y);
+        double numerator = double.Parse(x);
+        double denominator = double.Parse(y);
+
+        // Check if denominator is zero and throw DivideByZeroException
+        if (denominator == 0)
+        {
+            throw new DivideByZeroException("Cannot divide by zero!");
+        }
+
+        return numerator / denominator;
     }
 
-    // Implemented Power method with debugging
+    // Implemented Power method with explicit exception throwing
     public static double Power(string x, string y)
     {
         try
         {
-            // Explicitly parse the string inputs
             double baseValue = double.Parse(x);
             double exponent = double.Parse(y);
 
-            // Debugging output to ensure correct values
-            Console.WriteLine($"Base: {baseValue}, Exponent: {exponent}");
-
             // Perform the power operation
-            return Math.Pow(baseValue, exponent);  // Using Math.Pow to calculate x^y
+            return Math.Pow(baseValue, exponent);
         }
         catch (FormatException)
         {
-            Console.WriteLine("Invalid input! Please enter valid numbers for x and y.");
-            return 0.0;  // Return a default value in case of error
+            // Throw a FormatException if invalid input is detected
+            throw new FormatException("Invalid input! Please enter valid numbers for x and y.");
         }
     }
 }
